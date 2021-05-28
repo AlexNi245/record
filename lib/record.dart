@@ -69,6 +69,10 @@ class Record {
     final result = await _channel.invokeMethod<bool>('hasPermission');
     return result ?? false;
   }
+
+  static Future<dynamic> getDecibel() {
+    return _channel.invokeMethod('getDecibel');
+  }
 }
 
 /// Audio encoder to be used for recording.

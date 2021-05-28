@@ -5,6 +5,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 import 'package:record_example/audio_player.dart';
 
+import '../../lib/record.dart';
+
 class AudioRecorder extends StatefulWidget {
   final String path;
   final VoidCallback onStop;
@@ -24,6 +26,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
   @override
   void initState() {
     _isRecording = false;
+    Timer.periodic(Duration(milliseconds: 100), (timer) async {
+      var f = await Record.getDecibels();
+      print(f);
+    });
     super.initState();
   }
 
@@ -247,10 +253,7 @@ class _MyAppState extends State<MyApp> {
   Future<String> getPath() async {
     if (path == null) {
       final dir = await getApplicationDocumentsDirectory();
-      path = dir.path +
-          '/' +
-          DateTime.now().millisecondsSinceEpoch.toString() +
-          '.m4a';
+      path = dir.path + '/' + DateTime.now().millisecondsSinceEpoch.toString() + '.m4a';
     }
     return path!;
   }

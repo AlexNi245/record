@@ -9,6 +9,8 @@ import androidx.annotation.RequiresApi;
 
 import io.flutter.plugin.common.MethodChannel.Result;
 
+import static java.lang.Math.log10;
+
 class Recorder {
   private static final String LOG_TAG = "Record";
 
@@ -65,6 +67,18 @@ class Recorder {
   void resume(@NonNull Result result) {
     resumeRecording();
     result.success(null);
+  }
+
+  void getDecibels (@NonNull Result result){
+    if(!isRecording){
+      result.success(0.0);
+      return ;
+    }
+
+    double dB = 20*log10(recorder.getMaxAmplitude() / 32767.0);
+    result.success(dB);
+    return ;
+
   }
 
   void isRecording(@NonNull Result result) {
