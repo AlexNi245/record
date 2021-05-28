@@ -67,6 +67,7 @@ public class MethodCallHandlerImpl
                 break;
             case "getDecibel":
                 recorder.getDecibel(result);
+                break;
             default:
                 result.notImplemented();
                 break;
