@@ -65,8 +65,8 @@ public class MethodCallHandlerImpl
             case "hasPermission":
                 hasPermission(result);
                 break;
-            case "getDecibels":
-                recorder.getDecibels(result);
+            case "getDecibel":
+                recorder.getDecibel(result);
             default:
                 result.notImplemented();
                 break;

@@ -69,7 +69,7 @@ class Recorder {
     result.success(null);
   }
 
-  void getDecibels (@NonNull Result result){
+  void getDecibel (@NonNull Result result){
     if(!isRecording){
       result.success(0.0);
       return ;
