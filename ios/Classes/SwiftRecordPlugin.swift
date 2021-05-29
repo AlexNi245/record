@@ -146,10 +146,9 @@ public class SwiftRecordPlugin: NSObject, FlutterPlugin, AVAudioRecorderDelegate
         audioRecorder?.updateMeters()
         let dbfs = audioRecorder?.averagePower(forChannel: 0);
         
-        let db = pow(10.0, dbfs! / 20.0) * 120.0;
+        var db = pow(10.0, dbfs! / 20.0) * 120.0;
     
         if(db>1){
-            
             db = db+20.0
         }
     
