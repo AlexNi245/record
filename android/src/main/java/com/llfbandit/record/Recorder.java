@@ -75,8 +75,9 @@ class Recorder {
       return ;
     }
 
-    double dB = 20*log10(recorder.getMaxAmplitude() / 32767.0) * -1;
-    result.success(dB);
+    double dB = 55 - ( 20*log10(recorder.getMaxAmplitude() / 32767.0) * -1);
+    double normalized = dB>0.0 ? dB :0;
+    result.success(normalized);
     return ;
 
   }
