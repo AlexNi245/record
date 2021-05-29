@@ -142,26 +142,27 @@ public class SwiftRecordPlugin: NSObject, FlutterPlugin, AVAudioRecorderDelegate
             return
             
         }
-        
+
         audioRecorder?.updateMeters()
         let dbfs = audioRecorder?.averagePower(forChannel: 0);
-        
+
         var db = pow(10.0, dbfs! / 20.0) * 120.0;
-    
-        if(db>1){
+
+       
+
             db = db+20.0
-        }
-    
+        
+
         result(db)
     }
-    
+
     fileprivate func stopRecording() {
         audioRecorder?.stop()
         audioRecorder = nil
         isRecording = false
         isPaused = false
     }
-    
+
     // https://developer.apple.com/documentation/coreaudiotypes/coreaudiotype_constants/1572096-audio_data_format_identifiers
     fileprivate func getEncoder(_ encoder: Int) -> Int {
         switch(encoder) {
@@ -180,3 +181,4 @@ public class SwiftRecordPlugin: NSObject, FlutterPlugin, AVAudioRecorderDelegate
         }
     }
 }
+
