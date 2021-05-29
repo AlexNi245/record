@@ -142,11 +142,13 @@ public class SwiftRecordPlugin: NSObject, FlutterPlugin, AVAudioRecorderDelegate
             return
             
         }
-        print(audioRecorder?.isMeteringEnabled)
         
         audioRecorder?.updateMeters()
-        let db = audioRecorder?.averagePower(forChannel: 0)
-        print(pow(10.0, db! / 20.0) * 120.0)
+        let dbfs = audioRecorder?.averagePower(forChannel: 0);
+        
+        let db = pow(10.0, dbfs! / 20.0) * 120.0;
+    
+    
         result(db)
     }
     

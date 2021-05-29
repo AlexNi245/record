@@ -5,7 +5,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 import 'package:record_example/audio_player.dart';
 
-import '../../lib/record.dart';
 
 class AudioRecorder extends StatefulWidget {
   final String path;
@@ -27,7 +26,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
   void initState() {
     _isRecording = false;
     Timer.periodic(Duration(milliseconds: 100), (timer) async {
-      var f = await Record.getDecibels();
+      var f = await Record.getDecibel();
       print(f);
     });
     super.initState();
